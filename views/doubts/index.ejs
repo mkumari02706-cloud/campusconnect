@@ -1,0 +1,22 @@
+<!-- views/doubts/index.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Doubts - CampusConnect</title>
+</head>
+<body>
+  <h1>Study Communities</h1>
+  <a href="/doubts/new">+ Ask a Doubt</a>
+  <hr />
+  <% doubts.forEach(d => { %>
+    <div>
+      <a href="/doubts/<%= d._id %>"><h3><%= d.title %></h3></a>
+      <p><%= d.subject %> · <%= d.upvotes %> upvotes</p>
+    </div>
+    <hr />
+  <% }) %>
+  <% if (doubts.length === 0) { %>
+    <p>No doubts yet. Be the first to ask!</p>
+  <% } %>
+</body>
+</html>

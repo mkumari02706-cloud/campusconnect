@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title><%= doubt.title %> - CampusConnect</title>
+</head>
+<body>
+<h1><%= doubt.title %></h1>
+<p><%= doubt.subject %></p>
+<p><%= doubt.description %></p>
+
+<form action="/doubts/<%= doubt._id %>/upvote" method="POST">
+<button type="submit">Upvote (<%= doubt.upvotes %>)</button>
+</form>
+
+<h2>Replies</h2>
+<% (doubt.replies || []).forEach(r => { %>
+<div>
+<p><%= r.text %></p>
+</div>
+<% }) %>
+<form action="/doubts/<%= doubt._id %>/replies" method="POST">
+<textarea name="text" placeholder="Write a reply" required></textarea>
+<br />
+<button type="submit">Reply</button>
+</form>
+
+<a href="/doubts">← Back to all doubts</a>
+</body>
+</html>

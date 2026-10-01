@@ -1,0 +1,19 @@
+<!-- views/doubts/new.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ask a Doubt - CampusConnect</title>
+</head>
+<body>
+  <h1>Ask a Doubt</h1>
+  <form action="/doubts" method="POST">
+    <input type="text" name="title" placeholder="Doubt title" required />
+    <br />
+    <input type="text" name="subject" placeholder="Subject" required />
+    <br />
+    <textarea name="description" placeholder="Describe your doubt" required></textarea>
+    <br />
+    <button type="submit">Post Doubt</button>
+  </form>
+</body>
+</html>
