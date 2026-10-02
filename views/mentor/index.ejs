@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><%- include('../partials/head') %></head>
+<body>
+<%- include('../partials/navbar') %>
+<div class="container">
+<h1>Mentor Connect</h1>
+<a href="/mentor-connect/new" class="btn">+ Schedule Session</a>
+<hr />
+<% sessions.forEach(s => { %>
+<div class="card">
+<h3><%= s.title %></h3>
+<p class="meta"><%= s.subject %> · <%= new Date(s.slotTime).toLocaleString() %></p>
+<p><%= s.bookedStudents.length %> / <%= s.maxStudents %> booked</p>
+<form action="/mentor-connect/<%= s._id %>/book" method="POST">
+<button type="submit" class="btn btn-outline">Book Slot</button>
+</form>
+<% if (s.meetingLink) { %>
+  <a href="<%= s.meetingLink %>" target="_blank" class="btn btn-outline">Join Meeting</a>
+<% } %>
+</div>
+<% }) %>
+</div>
+</body>
+</html>

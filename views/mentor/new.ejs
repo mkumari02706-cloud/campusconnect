@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><%- include('../partials/head') %></head>
+<body>
+  <%- include('../partials/navbar') %>
+  <div class="container">
+    <h1>Schedule Mentoring Session</h1>
+    <form action="/mentor-connect" method="POST">
+      <input type="text" name="title" placeholder="Session title" required />
+      <input type="text" name="subject" placeholder="Subject" />
+      <input type="datetime-local" name="slotTime" required />
+      <input type="number" name="maxStudents" placeholder="Max students" value="10" />
+      <input type="url" name="meetingLink" placeholder="Meeting link (Zoom/Google Meet)" />
+      <button type="submit" class="btn">Schedule</button>
+    </form>
+  </div>
+</body>
+</html>

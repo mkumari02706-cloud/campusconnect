@@ -8,4 +8,4 @@ router.get("/", async (req, res) => {
   res.render("leaderboard/index", { topUsers }); // view ko data pass karo
 });
 
-module.exports = router;
+module.exports = router; 

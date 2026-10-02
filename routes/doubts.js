@@ -37,14 +37,15 @@ router.post("/", async (req, res) => {
   res.redirect("/doubts"); // list page pe wapas bhej diya
 });
 router.post("/", async (req, res) => {
-  const { title, description, subject } = req.body;
+  const { title, description, subject, isAnonymous } = req.body;
   await Doubt.create({
     title,
     description,
     subject,
-    author: req.session.userId
+    author: req.session.userId,
+    isAnonymous: isAnonymous === "on"
   });
-  await User.findByIdAndUpdate(req.session.userId, { $inc: { contributionScore: 2 } }); // <- yeh naya
+  await User.findByIdAndUpdate(req.session.userId, { $inc: { contributionScore: 2 } });
   res.redirect("/doubts");
 });
 
@@ -58,6 +59,13 @@ router.get("/:id", async (req, res) => {
 router.post("/:id/upvote", async (req, res) => {
   await Doubt.findByIdAndUpdate(req.params.id, { $inc: { upvotes: 1 } }); // upvotes mein +1
   res.redirect(`/doubts/${req.params.id}`);
+});
+router.post("/:id/delete", async (req, res) => {
+  const doubt = await Doubt.findById(req.params.id);
+  if (doubt.author.toString() === req.session.userId) {
+    await Doubt.findByIdAndDelete(req.params.id);
+  }
+  res.redirect("/doubts");
 });
 
 module.exports = router;

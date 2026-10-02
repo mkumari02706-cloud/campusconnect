@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CampusConnect</title>
-</head>
+<head><%- include('partials/head') %></head>
 <body>
-  <h1>Welcome to CampusConnect</h1>
-  <a href="/auth/register">Register</a> | <a href="/auth/login">Login</a>
+  <%- include('partials/navbar') %>
+  <div class="container">
+    <div class="hero">
+      <h1>Welcome to CampusConnect 👋</h1>
+      <p>Learn together, share knowledge, and grow with students from your campus.</p>
+      <a href="/doubts" class="btn">Explore Communities</a>
+      <a href="/leaderboard" class="btn btn-outline">View Leaderboard</a>
+    </div>
+    <div class="grid-3">
+      <div class="feature-card"><h3>👥 Communities</h3><p>Discuss subjects, ask doubts, and share resources.</p></div>
+      <div class="feature-card"><h3>🏆 Leaderboard</h3><p>See students ranked by their contributions.</p></div>
+      <div class="feature-card"><h3>🎯 Skill Gap</h3><p>Discover skills you need for your career goals.</p></div>
+    </div>
+  </div>
 </body>
 </html>

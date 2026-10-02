@@ -1,22 +1,22 @@
-<!-- views/doubts/index.ejs -->
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Doubts - CampusConnect</title>
-</head>
+<head><%- include('../partials/head') %></head>
 <body>
-  <h1>Study Communities</h1>
-  <a href="/doubts/new">+ Ask a Doubt</a>
-  <hr />
-  <% doubts.forEach(d => { %>
-    <div>
-      <a href="/doubts/<%= d._id %>"><h3><%= d.title %></h3></a>
-      <p><%= d.subject %> · <%= d.upvotes %> upvotes</p>
+  <%- include('../partials/navbar') %>
+  <div class="container">
+    <h1>Study Communities</h1>
+    <a href="/doubts/new" class="btn">+ Ask a Doubt</a>
+    <div style="margin-top: 1.5rem;">
+      <% doubts.forEach(d => { %>
+        <div class="card">
+          <a href="/doubts/<%= d._id %>"><h3><%= d.title %></h3></a>
+          <p class="meta"><%= d.subject %> · <%= d.isAnonymous ? "Anonymous" : "Posted" %> · <%= d.upvotes %> upvotes</p>
+        </div>
+      <% }) %>
+      <% if (doubts.length === 0) { %>
+        <div class="empty-state">No doubts yet. Be the first to ask!</div>
+      <% } %>
     </div>
-    <hr />
-  <% }) %>
-  <% if (doubts.length === 0) { %>
-    <p>No doubts yet. Be the first to ask!</p>
-  <% } %>
+  </div>
 </body>
 </html>

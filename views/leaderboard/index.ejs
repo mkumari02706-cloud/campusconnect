@@ -1,24 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Leaderboard - CampusConnect</title>
-</head>
+<head><%- include('../partials/head') %></head>
 <body>
-  <h1>Peer Leaderboard</h1>
-  <table border="1">
-    <tr>
-      <th>Rank</th>
-      <th>Name</th>
-      <th>Score</th>
-    </tr>
-    <% topUsers.forEach((u, i) => { %>
-      <tr>
-        <td><%= i + 1 %></td>
-        <td><%= u.name %></td>
-        <td><%= u.contributionScore %></td>
-      </tr>
-    <% }) %>
-  </table>
-  <a href="/doubts">← Back to Doubts</a>
+  <%- include('../partials/navbar') %>
+  <div class="container">
+    <h1>Peer Leaderboard</h1>
+    <table>
+      <tr><th>Rank</th><th>Name</th><th>Score</th></tr>
+      <% topUsers.forEach((u, i) => { %>
+        <tr><td><%= i + 1 %></td><td><%= u.name %></td><td><%= u.contributionScore %></td></tr>
+      <% }) %>
+    </table>
+  </div>
 </body>
 </html>

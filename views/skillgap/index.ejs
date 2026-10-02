@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><%- include('../partials/head') %></head>
+<body>
+  <%- include('../partials/navbar') %>
+  <div class="container">
+    <h1>Skill-Gap Tracker</h1>
+    <h2>Your Gap</h2>
+    <% if (gap.length === 0) { %><p>No gap — you know everything required!</p>
+    <% } else { %><ul><% gap.forEach(s => { %><li><%= s %></li><% }) %></ul><% } %>
+    <h2>Update Your Known Skills</h2>
+    <form action="/skill-gap" method="POST">
+      <% required.forEach(skill => { %>
+        <label><input type="checkbox" name="knownSkills" value="<%= skill %>" <%= known.includes(skill) ? "checked" : "" %> /> <%= skill %></label>
+      <% }) %>
+      <button type="submit" class="btn">Update</button>
+    </form>
+  </div>
+</body>
+</html>
